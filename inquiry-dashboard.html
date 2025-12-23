@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry Management - Bireena Medico</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="inquiry-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ============ HEADER ============ -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <i class="fas fa-pills"></i>
+                <span>Bireena Medico</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="admin-services.html" class="nav-link">Admin Panel</a>
+                <a href="inquiry-dashboard.html" class="nav-link active">Inquiries</a>
+            </nav>
+
+            <a href="admin-services.html" class="cta-btn">Back to Admin</a>
+        </div>
+    </header>
+
+    <!-- ============ INQUIRY DASHBOARD ============ -->
+    <div class="inquiry-container">
+        <div class="inquiry-header">
+            <h1>Inquiry Management Dashboard</h1>
+            <p>Track and manage all customer service inquiries</p>
+        </div>
+
+        <!-- ============ DASHBOARD STATS ============ -->
+        <div class="inquiry-stats">
+            <div class="stat-box">
+                <i class="fas fa-inbox"></i>
+                <div class="stat-content">
+                    <h4 id="totalInquiriesCount">0</h4>
+                    <p>Total Inquiries</p>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <i class="fas fa-star-half-alt"></i>
+                <div class="stat-content">
+                    <h4 id="newInquiriesCount">0</h4>
+                    <p>New Inquiries</p>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <i class="fas fa-phone"></i>
+                <div class="stat-content">
+                    <h4 id="contactedCount">0</h4>
+                    <p>Contacted</p>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <i class="fas fa-file-alt"></i>
+                <div class="stat-content">
+                    <h4 id="proposalCount">0</h4>
+                    <p>Proposal Sent</p>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <i class="fas fa-hourglass-half"></i>
+                <div class="stat-content">
+                    <h4 id="inProgressCount">0</h4>
+                    <p>In Progress</p>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <i class="fas fa-check-circle"></i>
+                <div class="stat-content">
+                    <h4 id="completedCount">0</h4>
+                    <p>Completed</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ FILTERS ============ -->
+        <div class="inquiry-filters">
+            <input type="text" id="searchInquiry" placeholder="Search by name or pharmacy..." class="search-box">
+
+            <select id="statusFilterInquiry" class="filter-select">
+                <option value="">All Status</option>
+                <option value="New">New</option>
+                <option value="Contacted">Contacted</option>
+                <option value="Proposal Sent">Proposal Sent</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+
+            <select id="serviceFilterInquiry" class="filter-select">
+                <option value="">All Services</option>
+                <option value="Website Design">Website Design</option>
+                <option value="Special Features">Special Features</option>
+                <option value="Support">Support</option>
+            </select>
+
+            <button class="btn btn-primary" onclick="exportInquiries()">
+                <i class="fas fa-download"></i> Export
+            </button>
+        </div>
+
+        <!-- ============ INQUIRY CARDS ============ -->
+        <div class="inquiries-container" id="inquiriesContainer">
+            <!-- Inquiry cards will be loaded here -->
+        </div>
+    </div>
+
+    <!-- ============ INQUIRY DETAIL MODAL ============ -->
+    <div id="inquiryModal" class="modal-inquiry">
+        <div class="modal-inquiry-content">
+            <div class="modal-header">
+                <h2>Inquiry Details</h2>
+                <button class="modal-close" onclick="closeInquiryDetail()">&times;</button>
+            </div>
+
+            <div id="inquiryModalBody" class="modal-body">
+                <!-- Inquiry details will be populated here -->
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="showReplyPanel()">Send Message</button>
+                <button class="btn btn-secondary" onclick="closeInquiryDetail()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ REPLY PANEL MODAL ============ -->
+    <div id="replyPanelModal" class="modal-inquiry">
+        <div class="modal-inquiry-content">
+            <div class="modal-header">
+                <h2>Send Reply to Customer</h2>
+                <button class="modal-close" onclick="closeReplyPanel()">&times;</button>
+            </div>
+
+            <div id="replyPanelBody" class="modal-body">
+                <div class="reply-info">
+                    <p><strong>To:</strong> <span id="replyTo"></span></p>
+                    <p><strong>Email:</strong> <span id="replyEmail"></span></p>
+                    <p><strong>Phone:</strong> <span id="replyPhone"></span></p>
+                </div>
+
+                <form id="replyForm" class="reply-form">
+                    <div class="form-group">
+                        <label for="replySubject">Subject</label>
+                        <input type="text" id="replySubject" placeholder="Reply subject..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="replyMessage">Message</label>
+                        <textarea id="replyMessage" rows="6" placeholder="Type your reply here..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="replyEmail" checked>
+                            <span>Send via Email</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="replySMS">
+                            <span>Send via SMS</span>
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Send Reply</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeReplyPanel()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Bireena Medico</h4>
+                    <p>Professional pharmacy website solutions.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="admin-services.html">Admin</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Phone: +91 98765 43210<br>Email: info@bireenamedico.com</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 Bireena Medico. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="inquiry-script.js"></script>
+</body>
+</html>

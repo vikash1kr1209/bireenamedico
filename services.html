@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Website Services - Bireena Medico</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="services-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ============ HEADER / NAVBAR ============ -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <i class="fas fa-pills"></i>
+                <span>Bireena Medico</span>
+            </div>
+
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="services.html" class="nav-link active">Services</a>
+                <a href="admin-services.html" class="nav-link">Admin Panel</a>
+                <a href="inquiry-dashboard.html" class="nav-link">Inquiries</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <button class="cta-btn" onclick="document.getElementById('serviceModal').style.display = 'flex';">
+                Get Service
+            </button>
+        </div>
+    </header>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section class="services-hero">
+        <div class="services-hero-content">
+            <h1>Pharmacy Website Development Services</h1>
+            <p>Professional website solutions designed specifically for pharmacies and medical stores</p>
+        </div>
+    </section>
+
+    <!-- ============ WORKFLOW SECTION ============ -->
+    <section class="workflow-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Service Journey</h2>
+                <p>From inquiry to launch - a streamlined process</p>
+            </div>
+
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-mouse-pointer"></i></div>
+                    <h4>Select Service</h4>
+                    <p>Choose the service that fits your pharmacy needs</p>
+                </div>
+
+                <div class="workflow-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-pencil-alt"></i></div>
+                    <h4>Submit Inquiry</h4>
+                    <p>Fill form with your requirements and contact info</p>
+                </div>
+
+                <div class="workflow-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-bell"></i></div>
+                    <h4>Get Notification</h4>
+                    <p>Receive confirmation and we review your needs</p>
+                </div>
+
+                <div class="workflow-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon"><i class="fas fa-phone"></i></div>
+                    <h4>Expert Consultation</h4>
+                    <p>Our team contacts you with proposal & quotation</p>
+                </div>
+
+                <div class="workflow-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">5</div>
+                    <div class="step-icon"><i class="fas fa-code"></i></div>
+                    <h4>Development</h4>
+                    <p>Website design & development begins</p>
+                </div>
+
+                <div class="workflow-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">6</div>
+                    <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                    <h4>Launch & Support</h4>
+                    <p>Website goes live with ongoing support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SERVICES LISTING ============ -->
+    <section class="services-listing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Pharmacy Services</h2>
+                <p>Tailored solutions for your pharmacy business</p>
+            </div>
+
+            <div class="services-filter">
+                <button class="filter-btn active" data-filter="all">All Services</button>
+                <button class="filter-btn" data-filter="website">Website Design</button>
+                <button class="filter-btn" data-filter="feature">Special Features</button>
+                <button class="filter-btn" data-filter="support">Support</button>
+            </div>
+
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ WHY CHOOSE US ============ -->
+    <section class="why-choose-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Us for Pharmacy Websites?</h2>
+                <p>Expertise in healthcare digital solutions</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Compliance Friendly</h4>
+                    <p>HIPAA compliant, secure patient data handling, and pharmacy regulations adherence</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h4>Fast & Scalable</h4>
+                    <p>Optimized performance and easy scaling as your pharmacy grows</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Mobile First</h4>
+                    <p>Responsive design for all devices - customers shop on phone or desktop</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h4>Secure Payment</h4>
+                    <p>SSL encryption, PCI DSS compliance, and secure payment gateway integration</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Expert Team</h4>
+                    <p>Specialists in pharmacy e-commerce and healthcare digital presence</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4>24/7 Support</h4>
+                    <p>Dedicated support team for post-launch maintenance and updates</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PORTFOLIO SECTION ============ -->
+    <section class="portfolio-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Pharmacy Projects</h2>
+                <p>Successful websites we've delivered</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-store"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>MediCare Pharmacy</h4>
+                        <p class="pharmacy-type">Retail Pharmacy Chain</p>
+                        <p class="portfolio-description">Modern e-commerce website with prescription upload and home delivery</p>
+                        <div class="portfolio-features">
+                            <span><i class="fas fa-check"></i> Online Pharmacy</span>
+                            <span><i class="fas fa-check"></i> Prescription Upload</span>
+                            <span><i class="fas fa-check"></i> Home Delivery</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Health Plus Medico</h4>
+                        <p class="pharmacy-type">Online Medicine Store</p>
+                        <p class="portfolio-description">Digital-first pharmacy with AI-powered medicine recommendations</p>
+                        <div class="portfolio-features">
+                            <span><i class="fas fa-check"></i> Inventory Management</span>
+                            <span><i class="fas fa-check"></i> AI Recommendations</span>
+                            <span><i class="fas fa-check"></i> Customer Portal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>City Pharmacy Network</h4>
+                        <p class="pharmacy-type">Multi-location Pharmacy</p>
+                        <p class="portfolio-description">Corporate pharmacy portal with centralized inventory and multi-branch management</p>
+                        <div class="portfolio-features">
+                            <span><i class="fas fa-check"></i> Multi-Branch Support</span>
+                            <span><i class="fas fa-check"></i> Centralized Inventory</span>
+                            <span><i class="fas fa-check"></i> Branch Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS SECTION ============ -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Pharmacy Clients Say</h2>
+                <p>Real feedback from satisfied customers</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Rajesh Kumar</h5>
+                            <p>Owner, Kumar Medico</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "The team transformed our pharmacy business with an amazing website. Our online sales have increased by 300% in just 6 months!"
+                    </p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Priya Sharma</h5>
+                            <p>Manager, HealthCare Plus</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Professional team, quick delivery, and excellent support. The prescription upload feature is a game-changer for our customers!"
+                    </p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Dr. Amit Patel</h5>
+                            <p>Founder, Wellness Pharmacy</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Outstanding work! They understood our pharmacy requirements perfectly and delivered a secure, user-friendly platform."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ INQUIRY MODAL ============ -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Pharmacy Service Inquiry</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+
+            <form id="inquiryForm" class="inquiry-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="serviceName">Select Service *</label>
+                        <select id="serviceName" name="serviceName" required>
+                            <option value="">-- Choose a service --</option>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="businessName">Pharmacy / Business Name *</label>
+                        <input type="text" id="businessName" name="businessName" placeholder="Your pharmacy name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pharmacyType">Type of Pharmacy *</label>
+                        <select id="pharmacyType" name="pharmacyType" required>
+                            <option value="">-- Select type --</option>
+                            <option value="Retail">Retail Pharmacy</option>
+                            <option value="Online">Online Store</option>
+                            <option value="Chain">Pharmacy Chain</option>
+                            <option value="Hospital">Hospital Pharmacy</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City *</label>
+                        <input type="text" id="city" name="city" placeholder="Your city" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Budget Range (Optional)</label>
+                        <select id="budget" name="budget">
+                            <option value="">-- Select budget --</option>
+                            <option value="10k-25k">₹10,000 - ₹25,000</option>
+                            <option value="25k-50k">₹25,000 - ₹50,000</option>
+                            <option value="50k-100k">₹50,000 - ₹100,000</option>
+                            <option value="100k+">₹100,000+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Required Features (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="Online Catalog">
+                            <span>Online Medicine Catalog</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="Prescription Upload">
+                            <span>Prescription Upload Feature</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="Inventory Management">
+                            <span>Inventory Management System</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="Online Payments">
+                            <span>Online Payment Integration</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="Home Delivery">
+                            <span>Home Delivery Tracking</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="Customer Portal">
+                            <span>Customer Login Portal</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Tell us more about your requirements</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Describe your pharmacy and specific needs..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="uploadFile">Upload Logo / Prescription (Optional)</label>
+                    <input type="file" id="uploadFile" name="uploadFile" accept="image/*,.pdf">
+                    <small>Max 5MB - JPEG, PNG, or PDF</small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Bireena Medico</h4>
+                    <p>Professional pharmacy website solutions for your business growth.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="admin-services.html">Admin</a></li>
+                        <li><a href="inquiry-dashboard.html">Inquiries</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Phone: +91 98765 43210<br>Email: info@bireenamedico.com</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 Bireena Medico. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="services-script.js"></script>
+</body>
+</html>

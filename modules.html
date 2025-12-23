@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bireena Medico - Module Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #f0f9ff 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: #10b981;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #6b7280;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #10b981;
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.2);
+        }
+
+        .module-icon {
+            font-size: 3rem;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+
+        .module-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #1f2937;
+        }
+
+        .module-card p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .module-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .module-features li {
+            color: #6b7280;
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .module-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .module-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .module-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .info-section h3 {
+            color: #10b981;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .info-section p {
+            color: #6b7280;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .code-block {
+            background: #1f2937;
+            color: #e0f2fe;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin-top: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat {
+            background: linear-gradient(135deg, #d1fae5 0%, #e0f2fe 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1><i class="fas fa-pills"></i> Bireena Medico</h1>
+            <p>Professional Pharmacy Website & Services Management Platform</p>
+        </div>
+
+        <!-- Main Modules -->
+        <div class="modules-grid">
+            <!-- Module 1: Main Website -->
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3>Main Pharmacy Website</h3>
+                <p>Your professional pharmacy presence with medicines, services, and contact information.</p>
+                <ul class="module-features">
+                    <li>Pharmacy services listing</li>
+                    <li>Medicine categories</li>
+                    <li>About & Contact sections</li>
+                    <li>Responsive design</li>
+                </ul>
+                <a href="index.html" class="module-link">
+                    <i class="fas fa-arrow-right"></i> Visit Website
+                </a>
+            </div>
+
+            <!-- Module 2: Services -->
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Website Services</h3>
+                <p>Showcase pharmacy website development services with customer inquiry form and workflow.</p>
+                <ul class="module-features">
+                    <li>Service listing & filtering</li>
+                    <li>Customer workflow display</li>
+                    <li>Portfolio showcase</li>
+                    <li>Inquiry form with validation</li>
+                </ul>
+                <a href="services.html" class="module-link">
+                    <i class="fas fa-arrow-right"></i> View Services
+                </a>
+            </div>
+
+            <!-- Module 3: Admin Panel -->
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <h3>Admin Panel</h3>
+                <p>Manage services, view inquiries, and configure settings from one dashboard.</p>
+                <ul class="module-features">
+                    <li>Add/Edit/Delete services</li>
+                    <li>Manage categories</li>
+                    <li>View all inquiries</li>
+                    <li>Dashboard statistics</li>
+                </ul>
+                <a href="admin-services.html" class="module-link">
+                    <i class="fas fa-arrow-right"></i> Admin Panel
+                </a>
+            </div>
+
+            <!-- Module 4: Inquiry Dashboard -->
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fas fa-inbox"></i>
+                </div>
+                <h3>Inquiry Management</h3>
+                <p>Track customer inquiries, update status, and manage communication in real-time.</p>
+                <ul class="module-features">
+                    <li>View all inquiries</li>
+                    <li>Status tracking workflow</li>
+                    <li>Send customer replies</li>
+                    <li>Export to CSV</li>
+                </ul>
+                <a href="inquiry-dashboard.html" class="module-link">
+                    <i class="fas fa-arrow-right"></i> Dashboard
+                </a>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="info-section">
+            <h3><i class="fas fa-chart-bar"></i> Project Statistics</h3>
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">14</div>
+                    <div class="stat-label">Files Created</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Features</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">8.5K</div>
+                    <div class="stat-label">Lines of Code</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Responsive</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Start Guide -->
+        <div class="info-section">
+            <h3><i class="fas fa-rocket"></i> Quick Start Guide</h3>
+            <p><strong>For Customers:</strong> Visit services.html to browse pharmacy website services and submit inquiries.</p>
+            <p><strong>For Admin:</strong> Go to admin-services.html to add services and manage the platform.</p>
+            <p><strong>For Inquiry Management:</strong> Use inquiry-dashboard.html to track and respond to customer inquiries.</p>
+            <div class="code-block">
+# Quick Links:
+- Main Website: http://localhost:8000
+- Services: http://localhost:8000/services.html
+- Admin Panel: http://localhost:8000/admin-services.html
+- Inquiries: http://localhost:8000/inquiry-dashboard.html
+            </div>
+        </div>
+
+        <!-- Features Overview -->
+        <div class="info-section">
+            <h3><i class="fas fa-star"></i> Key Features</h3>
+            <p><strong>Service Management:</strong> Add, edit, and manage pharmacy website development services with pricing, timelines, and categories.</p>
+            <p><strong>Customer Inquiries:</strong> Comprehensive inquiry form with feature selection, budget range, and file uploads.</p>
+            <p><strong>Status Tracking:</strong> Track inquiries through workflow: New → Contacted → Proposal Sent → In Progress → Completed.</p>
+            <p><strong>Communication:</strong> Reply to customers, send updates, and manage all communications in one place.</p>
+            <p><strong>Analytics:</strong> Real-time statistics, search, filtering, and CSV export capabilities.</p>
+            <p><strong>Responsive Design:</strong> Fully optimized for mobile, tablet, and desktop devices.</p>
+        </div>
+
+        <!-- Documentation -->
+        <div class="info-section">
+            <h3><i class="fas fa-book"></i> Documentation</h3>
+            <p>Complete documentation is included in the project folder:</p>
+            <ul class="module-features" style="margin-top: 1rem;">
+                <li><strong>QUICK_START.txt</strong> - Quick reference guide for getting started</li>
+                <li><strong>DOCUMENTATION.txt</strong> - Comprehensive feature documentation</li>
+                <li><strong>PROJECT_SUMMARY.txt</strong> - Complete project overview</li>
+            </ul>
+            <p style="margin-top: 1rem; color: #10b981; font-weight: 600;">
+                All files are located in: c:\Users\vikas\OneDrive\Desktop\marg\
+            </p>
+        </div>
+
+        <!-- Technical Details -->
+        <div class="info-section">
+            <h3><i class="fas fa-code"></i> Technical Stack</h3>
+            <p><strong>Frontend:</strong> HTML5, CSS3, Vanilla JavaScript</p>
+            <p><strong>Styling:</strong> Custom CSS with responsive design, gradients, and animations</p>
+            <p><strong>Icons:</strong> Font Awesome 6.4.0</p>
+            <p><strong>Fonts:</strong> Google Fonts (Poppins, Roboto)</p>
+            <p><strong>Data Storage:</strong> Browser localStorage (demo mode)</p>
+            <p><strong>Browser Support:</strong> All modern browsers (Chrome, Firefox, Safari, Edge)</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2025 Bireena Medico. Professional Pharmacy Website Development.</p>
+            <p>All features are fully functional and ready for customization.</p>
+        </div>
+    </div>
+</body>
+</html>

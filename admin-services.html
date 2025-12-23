@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Services - Bireena Medico</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ============ ADMIN SIDEBAR ============ -->
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-cog"></i> Admin Panel</h3>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="#services-section" class="menu-item active" data-section="services">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Manage Services</span>
+                </a>
+                <a href="#inquiries-section" class="menu-item" data-section="inquiries">
+                    <i class="fas fa-envelope"></i>
+                    <span>View Inquiries</span>
+                    <span class="badge" id="inquiryBadge">0</span>
+                </a>
+                <a href="#settings-section" class="menu-item" data-section="settings">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="index.html" class="menu-item logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Back to Website</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- ============ MAIN CONTENT ============ -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>Admin Dashboard</h1>
+                <p>Manage pharmacy website services and customer inquiries</p>
+            </div>
+
+            <!-- ============ SERVICES SECTION ============ -->
+            <section id="services-section" class="admin-section active">
+                <div class="section-title">
+                    <h2>Manage Services</h2>
+                    <button class="btn btn-primary" onclick="openAddServiceModal()">
+                        <i class="fas fa-plus"></i> Add New Service
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="totalServices">0</h4>
+                            <p>Total Services</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-inbox"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="totalInquiries">0</h4>
+                            <p>Total Inquiries</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="pendingInquiries">0</h4>
+                            <p>Pending Inquiries</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="completedProjects">0</h4>
+                            <p>Completed Projects</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="services-table-container">
+                    <table class="services-table">
+                        <thead>
+                            <tr>
+                                <th>Service Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Delivery Time</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="servicesTableBody">
+                            <!-- Services will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ============ INQUIRIES SECTION ============ -->
+            <section id="inquiries-section" class="admin-section">
+                <div class="section-title">
+                    <h2>Customer Inquiries</h2>
+                    <div class="filter-controls">
+                        <select id="statusFilter" onchange="filterInquiries()">
+                            <option value="">All Status</option>
+                            <option value="New">New</option>
+                            <option value="Contacted">Contacted</option>
+                            <option value="Proposal Sent">Proposal Sent</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="inquiries-list" id="inquiriesList">
+                    <!-- Inquiries will be populated here -->
+                </div>
+            </section>
+
+            <!-- ============ SETTINGS SECTION ============ -->
+            <section id="settings-section" class="admin-section">
+                <div class="section-title">
+                    <h2>Settings</h2>
+                </div>
+
+                <div class="settings-form-group">
+                    <h4>Service Categories</h4>
+                    <div class="category-list" id="categoryList">
+                        <!-- Categories will be populated here -->
+                    </div>
+                    <input type="text" id="newCategory" placeholder="Add new category" class="input-field">
+                    <button class="btn btn-primary" onclick="addCategory()">Add Category</button>
+                </div>
+
+                <div class="settings-form-group">
+                    <h4>Email Settings</h4>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="emailOnNewInquiry" checked>
+                        <span>Send email when new inquiry arrives</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="emailConfirmation" checked>
+                        <span>Send automatic confirmation email to customer</span>
+                    </label>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ============ ADD/EDIT SERVICE MODAL ============ -->
+    <div id="serviceFormModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Add New Service</h2>
+                <button class="modal-close" onclick="closeServiceModal()">&times;</button>
+            </div>
+
+            <form id="serviceForm" class="admin-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="srvName">Service Name *</label>
+                        <input type="text" id="srvName" name="srvName" placeholder="e.g., Pharmacy Website Design" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="srvCategory">Category *</label>
+                        <select id="srvCategory" name="srvCategory" required>
+                            <option value="">-- Select category --</option>
+                            <option value="Website Design">Website Design</option>
+                            <option value="Special Features">Special Features</option>
+                            <option value="Support">Support</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="srvIcon">Icon (Class or URL)</label>
+                        <input type="text" id="srvIcon" name="srvIcon" placeholder="e.g., fas fa-globe or image-url">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="srvPrice">Starting Price (₹)</label>
+                        <input type="number" id="srvPrice" name="srvPrice" placeholder="25000">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="srvTimeline">Delivery Timeline</label>
+                        <input type="text" id="srvTimeline" name="srvTimeline" placeholder="e.g., 2-3 weeks">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="srvStatus">Status *</label>
+                        <select id="srvStatus" name="srvStatus" required>
+                            <option value="Published">Published</option>
+                            <option value="Draft">Draft</option>
+                            <option value="Archived">Archived</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="srvDescription">Description *</label>
+                    <textarea id="srvDescription" name="srvDescription" rows="6" placeholder="Detailed service description..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="srvFeatures">Key Features (comma-separated)</label>
+                    <textarea id="srvFeatures" name="srvFeatures" rows="3" placeholder="Feature 1, Feature 2, Feature 3"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Service</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeServiceModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============ INQUIRY DETAILS MODAL ============ -->
+    <div id="inquiryDetailsModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Inquiry Details</h2>
+                <button class="modal-close" onclick="closeInquiryModal()">&times;</button>
+            </div>
+
+            <div id="inquiryDetailsContent" class="inquiry-details">
+                <!-- Inquiry details will be populated here -->
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-primary" onclick="updateInquiryStatus()">Update Status</button>
+                <button class="btn btn-secondary" onclick="closeInquiryModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>
